@@ -31,9 +31,41 @@ new class extends Component
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
+                        {{ __('Dashboardd') }}
                     </x-nav-link>
                 </div>
+
+                {{-- Nav para usuarios --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')" wire:navigate>
+                        {{ __('Usuarios') }}
+                    </x-nav-link>
+                </div>
+                {{-- Nav para roles --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')" wire:navigate>
+                        {{ __('Roles') }}
+                    </x-nav-link>
+                </div>
+                {{-- Nav para permisos --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')" wire:navigate>
+                        {{ __('Permisos') }}
+                    </x-nav-link>
+                </div>
+                {{--Nav para incidentes--}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')" wire:navigate>
+                        {{ __('Roles') }}
+                    </x-nav-link>
+                </div>
+                {{-- nav para x--}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')" wire:navigate>
+                        {{ __('x') }}
+                    </x-nav-link>
+                </div>
+
             </div>
 
             <!-- Settings Dropdown -->
