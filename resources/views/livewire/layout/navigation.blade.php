@@ -43,28 +43,11 @@ new class extends Component
                 </div>
                 {{-- Nav para roles --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')" wire:navigate>
+                    <x-nav-link :href="route('roles.index')" :active="request()->routeIs('roles.index')" wire:navigate>
                         {{ __('Roles') }}
                     </x-nav-link>
                 </div>
-                {{-- Nav para permisos --}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')" wire:navigate>
-                        {{ __('Permisos') }}
-                    </x-nav-link>
-                </div>
-                {{--Nav para incidentes--}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')" wire:navigate>
-                        {{ __('Roles') }}
-                    </x-nav-link>
-                </div>
-                {{-- nav para x--}}
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')" wire:navigate>
-                        {{ __('x') }}
-                    </x-nav-link>
-                </div>
+                
 
             </div>
 
