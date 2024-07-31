@@ -29,8 +29,5 @@ class RolesAndPermissionsSeeder extends Seeder
         $editorRole->givePermissionTo([$editArticles, $publishArticles]);
         $writerRole->givePermissionTo($editArticles);
 
-        // Crear un usuario y asignar rol
-        $user = \App\Models\User::find(1); // Reemplaza con un ID válido
-        $user->assignRole('admin');
     }
 }

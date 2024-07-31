@@ -25,15 +25,15 @@ class RoleController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:roles,name',
-            'permissions' => 'array'
+            'permissions' => 'required|array',
+            'permissions.*' => 'exists:permissions,id',
         ]);
-
+    
         $role = Role::create(['name' => $request->name]);
-        if ($request->has('permissions')) {
-            $role->givePermissionTo($request->permissions);
-        }
-
-        return redirect()->route('roles.index');
+    
+        $role->permissions()->sync($request->permissions);
+    
+        return redirect()->route('roles.index')->with('success', 'Role created successfully');
     }
 
     public function show(string $id)
