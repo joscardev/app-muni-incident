@@ -13,10 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        //los que ya llame (QUITAR COMENTARIO SI DESCARGASTE Y NO TIENES DATOS)
+        //los que ya llame (QUITAR COMENTARIO SI PULLEASTE Y NO TIENES DATOS)
         /* 
         $this->call(RolesAndPermissionsSeeder::class);
-        
+
         */
 
 
