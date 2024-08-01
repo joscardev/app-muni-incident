@@ -16,6 +16,17 @@ class UsersAndRolesSeeder extends Seeder
      */
     public function run(): void
     {
+        // create user
+        $user = User::create([
+            'name' => 'Admin',
+            'email' => 'admin@muni.com',
+            'password' => Hash::make('verano2080'),
+        ]);
+
+        // assign role to user
+        $role = Role::findByName('Administrador');
+        $user->assignRole($role);
+
         
     }
 }

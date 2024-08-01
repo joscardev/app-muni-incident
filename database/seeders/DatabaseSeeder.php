@@ -16,8 +16,10 @@ class DatabaseSeeder extends Seeder
         //los que ya llame (QUITAR COMENTARIO SI PULLEASTE Y NO TIENES DATOS)
         /* 
         $this->call(RolesAndPermissionsSeeder::class);
+        $this->call(UsersAndRolesSeeder::class);
 
         */
+        
 
 
     }
