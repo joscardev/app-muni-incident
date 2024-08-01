@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use Spatie\Permission\Models\Role;
 
 new #[Layout('layouts.guest')] class extends Component
 {
@@ -28,7 +29,15 @@ new #[Layout('layouts.guest')] class extends Component
 
         $validated['password'] = Hash::make($validated['password']);
 
-        event(new Registered($user = User::create($validated)));
+        // Crear el usuario
+        $user = User::create($validated);
+
+        // Asignar el rol de "Usuario Final"
+        $role = Role::firstOrCreate(['name' => 'Usuario Final']);
+        $user->assignRole($role->name);
+
+        // Emitir el evento de registro
+        event(new Registered($user));
 
         Auth::login($user);
 

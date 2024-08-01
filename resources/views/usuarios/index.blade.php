@@ -22,6 +22,7 @@
                                 <th class="px-4 py-2 text-left text-white dark:text-gray-200">ID</th>
                                 <th class="px-4 py-2 text-left text-white dark:text-gray-200">Nombre</th>
                                 <th class="px-4 py-2 text-left text-white dark:text-gray-200">Correo</th>
+                                <th class="px-4 py-2 text-left text-white dark:text-gray-200">Rol</th>
                                 <th class="px-4 py-2 text-left text-white dark:text-gray-200">Acciones</th>
                             </tr>
                         </thead>
@@ -31,6 +32,11 @@
                                     <td class="border px-4 py-2 text-white dark:text-gray-200">{{ $user->id }}</td>
                                     <td class="border px-4 py-2 text-white dark:text-gray-200">{{ $user->name }}</td>
                                     <td class="border px-4 py-2 text-white dark:text-gray-200">{{ $user->email }}</td>
+                                    <td class="border px-4 py-2 text-white dark:text-gray-200">
+                                        @foreach ($user->roles as $role)
+                                            <span class="bg-purple-500 text-white font-bold px-2 rounded">{{ $role->name }}</span>
+                                        @endforeach
+                                    </td>
                                     <td class="border px-4 py-2">
                                         <div class="flex justify-center">
                                             <a href="{{ route('usuarios.edit', $user->id) }}" class="bg-violet-500 dark:bg-violet-700 hover:bg-violet-600 dark:hover:bg-violet-800 text-white font-bold py-2 px-4 rounded mr-2">Edit</a>

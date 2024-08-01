@@ -58,6 +58,22 @@
                                 required>
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                         </div>
+                        <div class="mb-4">
+                            <label for="role"
+                                class="block text-sm font-medium text-gray-700 dark:text-gray-200">Rol</label>
+                            <select name="role" id="role"
+                                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                                required>
+                                @foreach ($roles as $role)
+                                    <option value="{{ $role->name }}"
+                                        {{ old('role', $users->roles->first()->name) === $role->name ? 'selected' : '' }}>
+                                        {{ $role->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+
                     </div>
 
                     <button type="submit"
