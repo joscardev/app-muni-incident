@@ -28,30 +28,34 @@ class PermissionController extends Controller
         return redirect()->route('permisos.index');
     }
 
-    public function show(Permission $permission)
+    public function show(Permission $permissions)
     {
-        return view('permisos.show', compact('permission'));
+        return view('permisos.show', compact('permissions'));
     }
 
-    public function edit(Permission $permission)
+    public function edit($id)
     {
-        return view('permisos.edit', compact('permission'));
+        $permissions = Permission::findOrFail($id);
+
+        return view('permisos.edit', compact('permissions'));
     }
 
-    public function update(Request $request, Permission $permission)
+    public function update(Request $request, $id)
     {
+        $permissions = Permission::findOrFail($id);
+
         $request->validate([
-            'name' => 'required|unique:permissions,name,' . $permission->id,
+            'name' => 'required|unique:permissions,name,' . $permissions->id,
         ]);
 
-        $permission->update(['name' => $request->name]);
+        $permissions->update(['name' => $request->name]);
         return redirect()->route('permisos.index');
     }
 
-    public function destroy(Permission $permission)
+    public function destroy($id)
     {
-        $permission->delete();
+        $permissions = Permission::findOrFail($id);
+        $permissions->delete();
         return redirect()->route('permisos.index');
     }
-
 }

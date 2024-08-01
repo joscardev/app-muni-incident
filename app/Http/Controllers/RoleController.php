@@ -28,43 +28,38 @@ class RoleController extends Controller
             'permissions' => 'required|array',
             'permissions.*' => 'exists:permissions,id',
         ]);
-    
+
         $role = Role::create(['name' => $request->name]);
-    
-        $role->permissions()->sync($request->permissions);
-    
+
+        $permissions = Permission::whereIn('id', $request->permissions)->pluck('name');
+        $role->givePermissionTo($permissions);
+
         return redirect()->route('roles.index')->with('success', 'Role created successfully');
     }
 
-    public function show(string $id)
+    public function edit($id)
     {
-        //
-    }
-
-    public function edit(string $id)
-    {
+        $role = Role::findOrFail($id);
         $permissions = Permission::all();
         return view('roles.edit', compact('role', 'permissions'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
+        $role = Role::findOrFail($id);
+
         $request->validate([
             'name' => 'required|unique:roles,name,' . $role->id,
-            'permissions' => 'array'
+            'permissions' => 'required|array',
+            'permissions.*' => 'exists:permissions,id',
         ]);
 
         $role->update(['name' => $request->name]);
-        if ($request->has('permissions')) {
-            $role->syncPermissions($request->permissions);
-        } else {
-            $role->syncPermissions([]);
-        }
 
-        return redirect()->route('roles.index');
+        $permissions = Permission::whereIn('id', $request->permissions)->pluck('name');
+        $role->syncPermissions($permissions);
+
+        return redirect()->route('roles.index')->with('success', 'Role updated successfully');
     }
 
     /**
