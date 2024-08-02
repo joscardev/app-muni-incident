@@ -13,7 +13,7 @@ class DepartamentoController extends Controller
     public function index()
     {
         $departamentos = Departamento::all();
-        return view('departamento.index', compact('departamentos'));
+        return view('departamentos.index', compact('departamentos'));
     }
 
     /**
@@ -30,7 +30,7 @@ class DepartamentoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
         ]);
 
@@ -51,6 +51,8 @@ class DepartamentoController extends Controller
      */
     public function edit(string $id)
     {
+        $departamento = Departamento::findOrFail($id);
+        return view('departamentos.edit', compact('departamento'));
     }
 
     /**
@@ -59,7 +61,7 @@ class DepartamentoController extends Controller
     public function update(Request $request, Departamento $departamento)
     {
         $request->validate([
-            'nombre' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
             'descripcion' => 'nullable|string',
         ]);
 

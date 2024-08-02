@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Departamento extends Model
 {
     use HasFactory;
-    protected $fillable = ['nombre', 'descripcion'];
+    protected $fillable = ['name', 'descripcion'];
 
     public function usuarios()
     {

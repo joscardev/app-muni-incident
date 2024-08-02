@@ -52,6 +52,11 @@ new class extends Component
                         {{ __('Permisos') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('departamentos.index')" :active="request()->routeIs('departamentos.index')" wire:navigate>
+                        {{ __('Departamentos') }}
+                    </x-nav-link>
+                </div>
                 
 
             </div>
