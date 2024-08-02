@@ -71,6 +71,12 @@ new class extends Component
                         {{ __('Prioridad Incidencias') }}
                     </x-nav-link>
                 </div>
+                {{-- Nav para categoria de incidencias --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('categoriaI.index')" :active="request()->routeIs('categoriaI.index')" wire:navigate>
+                        {{ __('Categoria Incidencias') }}
+                    </x-nav-link>
+                </div>
 
             </div>
 

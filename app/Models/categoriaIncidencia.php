@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class categoriaIncidencia extends Model
 {
     use HasFactory;
-    protected $fillable = ['descripcion'];
+    protected $fillable = ['nombre'];
 }

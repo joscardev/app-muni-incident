@@ -15,11 +15,11 @@ class PrioridadIncidenciasSeeder extends Seeder
     public function run(): void
     {
         prioridadIncidencia::insert([
-            ['nombre' => 'Pendiente', 'created_at' => Carbon::now()],
-            ['nombre' => 'En Progreso', 'created_at' => Carbon::now()],
-            ['nombre' => 'Resuelta', 'created_at' => Carbon::now()],
-            ['nombre' => 'Cerrada', 'created_at' => Carbon::now()],
-            ['nombre' => 'Cancelada', 'created_at' => Carbon::now()],
+            ['nombre' => 'Baja', 'created_at' => Carbon::now()],
+            ['nombre' => 'Media', 'created_at' => Carbon::now()],
+            ['nombre' => 'Alta', 'created_at' => Carbon::now()],
+            ['nombre' => 'Urgente', 'created_at' => Carbon::now()],
+
         ]);
     }
 }
