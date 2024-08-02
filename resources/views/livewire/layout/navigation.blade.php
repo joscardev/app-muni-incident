@@ -57,7 +57,11 @@ new class extends Component
                         {{ __('Departamentos') }}
                     </x-nav-link>
                 </div>
-                
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('estadoI.index')" :active="request()->routeIs('estadoI.index')" wire:navigate>
+                        {{ __('Estado Incidencias') }}
+                    </x-nav-link>
+                </div>
 
             </div>
 

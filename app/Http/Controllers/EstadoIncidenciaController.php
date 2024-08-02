@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\estadoIncidencia;
 use Illuminate\Http\Request;
+
+
 
 class EstadoIncidenciaController extends Controller
 {
@@ -11,7 +14,8 @@ class EstadoIncidenciaController extends Controller
      */
     public function index()
     {
-        //
+        $estados = estadoIncidencia::all();
+        return view('estadoI.index', compact('estados'));
     }
 
     /**
@@ -19,7 +23,7 @@ class EstadoIncidenciaController extends Controller
      */
     public function create()
     {
-        //
+        return view('estadoI.create');
     }
 
     /**
@@ -27,7 +31,12 @@ class EstadoIncidenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+        ]);
+
+        estadoIncidencia::create($request->all());
+        return redirect()->route('estadoI.index')->with('success', 'Estado creado con éxito.');
     }
 
     /**
@@ -43,7 +52,8 @@ class EstadoIncidenciaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $estado = estadoIncidencia::findOrFail($id);
+        return view('estadoI.edit', compact('estado'));
     }
 
     /**
@@ -51,7 +61,13 @@ class EstadoIncidenciaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nombre' =>'required|string|max:255',
+        ]);
+
+        $estado = estadoIncidencia::findOrFail($id);
+        $estado->update($request->all());
+        return redirect()->route('estadoI.index')->with('success', 'Estado actualizado con éxito.');
     }
 
     /**
@@ -59,6 +75,8 @@ class EstadoIncidenciaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $estado = estadoIncidencia::findOrFail($id);
+        $estado->delete();
+        return redirect()->route('estadoI.index')->with('success', 'Estado eliminado con éxito.');
     }
 }
