@@ -22,6 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PrioridadIncidenciasSeeder::class); en pc aun no
 
         */
-        $this->call(PrioridadIncidenciasSeeder::class);
+
     }
 }
