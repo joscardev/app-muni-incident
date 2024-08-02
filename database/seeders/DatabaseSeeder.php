@@ -19,8 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call(UsersAndRolesSeeder::class);
         $this->call(DepartamentoSeeder::class); en pc aun no
         $this->call(EstadoIncidenciasSeeder::class); en pc aun no
+        $this->call(PrioridadIncidenciasSeeder::class); en pc aun no
 
         */
-        
+        $this->call(PrioridadIncidenciasSeeder::class);
     }
 }

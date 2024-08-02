@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\prioridadIncidencia;
 use Illuminate\Http\Request;
 
 class PrioridadIncidenciaController extends Controller
@@ -11,7 +12,8 @@ class PrioridadIncidenciaController extends Controller
      */
     public function index()
     {
-        //
+        $prioridad = prioridadIncidencia::all();
+        return view('prioridadI.index', compact('prioridad')); 
     }
 
     /**
@@ -19,7 +21,7 @@ class PrioridadIncidenciaController extends Controller
      */
     public function create()
     {
-        //
+        return view('prioridadI.create');
     }
 
     /**
@@ -27,7 +29,12 @@ class PrioridadIncidenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' =>'required|string|max:255',
+        ]);
+        prioridadIncidencia::create($request->all());
+        return redirect()->route('prioridadI.index');
+
     }
 
     /**
@@ -43,7 +50,8 @@ class PrioridadIncidenciaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $prioridad = prioridadIncidencia::findOrFail($id);
+        return view('prioridadI.edit', compact('prioridad'));
     }
 
     /**
@@ -51,7 +59,12 @@ class PrioridadIncidenciaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nombre' =>'required|string|max:255',
+        ]);
+        $prioridad = prioridadIncidencia::findOrFail($id);
+        $prioridad->update($request->all());
+        return redirect()->route('prioridadI.index');
     }
 
     /**
@@ -59,6 +72,7 @@ class PrioridadIncidenciaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        prioridadIncidencia::destroy($id);
+        return redirect()->route('prioridadI.index');
     }
 }

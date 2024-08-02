@@ -47,19 +47,28 @@ new class extends Component
                         {{ __('Roles') }}
                     </x-nav-link>
                 </div>
+                {{--  --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('permisos.index')" :active="request()->routeIs('permisos.index')" wire:navigate>
                         {{ __('Permisos') }}
                     </x-nav-link>
                 </div>
+                {{-- Nav para departamentos --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('departamentos.index')" :active="request()->routeIs('departamentos.index')" wire:navigate>
                         {{ __('Departamentos') }}
                     </x-nav-link>
                 </div>
+                {{-- Nav para estado de incidencias --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('estadoI.index')" :active="request()->routeIs('estadoI.index')" wire:navigate>
                         {{ __('Estado Incidencias') }}
+                    </x-nav-link>
+                </div>
+                {{-- Nav para prioridad de incidencias --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('prioridadI.index')" :active="request()->routeIs('prioridadI.index')" wire:navigate>
+                        {{ __('Prioridad Incidencias') }}
                     </x-nav-link>
                 </div>
 
