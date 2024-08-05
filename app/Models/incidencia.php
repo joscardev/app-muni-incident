@@ -14,17 +14,17 @@ class incidencia extends Model
 
     public function estado()
     {
-        return $this->belongsTo(EstadoIncidencia::class);
+        return $this->belongsTo(estadoIncidencia::class);
     }
 
     public function prioridad()
     {
-        return $this->belongsTo(PrioridadIncidencia::class);
+        return $this->belongsTo(prioridadIncidencia::class);
     }
 
     public function categoria()
     {
-        return $this->belongsTo(CategoriaIncidencia::class);
+        return $this->belongsTo(categoriaIncidencia::class);
     }
 
     public function creador()
