@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\categoriaIncidencia;
+use App\Models\estadoIncidencia;
+use App\Models\incidencia;
+use App\Models\prioridadIncidencia;
 use Illuminate\Http\Request;
 
 class IncidenciaController extends Controller
@@ -11,7 +15,8 @@ class IncidenciaController extends Controller
      */
     public function index()
     {
-        //
+        $incidencias = incidencia::with(['estado','prioridad','categoria'])->get();
+        return view('incidencia.index', compact('incidencias'));
     }
 
     /**
@@ -19,7 +24,10 @@ class IncidenciaController extends Controller
      */
     public function create()
     {
-        //
+        $estados = estadoIncidencia::all();
+        $prioridades = prioridadIncidencia::all();
+        $categorias = categoriaIncidencia::all();
+        return view('incidencia.create', compact('estados', 'prioridades', 'categorias'));
     }
 
     /**
@@ -27,7 +35,15 @@ class IncidenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request-> validate([
+            'titulo' => 'required|string|max:255',
+            'descripcion' => 'nullable|string',
+            'estado_id' => 'required|exists:estado_incidencias,id',
+            'prioridad_id' => 'required|exists:prioridad_incidencias,id',
+            'categoria_id' => 'required|exists:categoria_incidencias,id',
+        ]);
+        Incidencia::create($request->all());
+        return redirect()->route('incidencias.index')->with('success', 'Incidencia creada con éxito.');
     }
 
     /**
@@ -43,7 +59,7 @@ class IncidenciaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**
